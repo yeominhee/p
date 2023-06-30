@@ -346,7 +346,7 @@ section {
 
 }
 
-@mixin bg($name, $path: "/images/", $year: "2023/") {
+@mixin bg($name, $path: "/pp/images/", $year: "2023/") {
     background-image: url("#{$path}#{$year}#{$name}.png");
 }
 
