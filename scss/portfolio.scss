@@ -100,8 +100,8 @@ ul {
 }
 
 .d-flex {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .j-sb {
@@ -261,8 +261,7 @@ header {
 
 
 section {
-    padding-top: 6vw;
-    padding-bottom: 6vw;
+    padding: 6vw 2vw;
     margin: 0 auto;
     max-width: 1400px;
 }
@@ -381,4 +380,11 @@ section {
         @include bg('card2017-#{$i}', $year:'2017/');
     }
 
+}
+
+@media(max-width:768px){
+    .d-flex {
+        grid-template-columns: 1fr 1fr;
+    }
+    
 }
