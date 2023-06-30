@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/portfolio.min.css">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+	<title>Document</title>
+</head>
+<body>
+
+	<div class="card-popup modal" id="popupOne">
+		<button class="btn-close"><img src="/images/portfolio/btn_m_close.svg" alt="close"></button>
+		<button class="btn-left">
+			<img src="https://eap.co.kr/images/2022/btn_mainbanner_left_normal.svg">
+		</button>
+		<button class="btn-right">
+			<img src="https://eap.co.kr/images/2022/btn_mainbanner_right_normal.svg">
+		</button>
+		<div class="slider">
+			<div class="slider__item showing">
+				<img src="/images/portfolio/card2022-2-slide1.png" alt="스크린샷">
+			</div>
+			<div class="slider__item">
+				<img src="/images/portfolio/card2022-2-slide2.png" alt="스크린샷">
+			</div>
+			<div class="slider__item">
+				<img src="/images/portfolio/ud/목표가치선정.png" alt="스크린샷">
+			</div>
+			<div class="slider__item">
+				<img src="/images/portfolio/ud/목표직업탐색.png" alt="스크린샷">
+			</div>
+			<div class="slider__item">
+				<img src="/images/portfolio/ud/직업기초역량진단.png" alt="스크린샷">
+			</div>
+			<div class="slider__item">
+				<img src="/images/portfolio/ud/진로설계.png" alt="스크린샷">
+			</div>
+
+		</div>
+	</div>
+
+	<div class="card-popup modal" id="popupOne2">
+		<button class="btn-close"><img src="/images/portfolio/btn_m_close.svg" alt="close"></button>
+		<button class="btn-left">
+			<img src="https://eap.co.kr/images/2022/btn_mainbanner_left_normal.svg">
+		</button>
+		<button class="btn-right">
+			<img src="https://eap.co.kr/images/2022/btn_mainbanner_right_normal.svg">
+		</button>
+		<div class="slider">
+			<div class="slider__item showing">
+				<img src="/images/portfolio/ud/목표가치선정.png" alt="스크린샷">
+			</div>
+			<div class="slider__item">
+				<img src="/images/portfolio/ud/목표직업탐색.png" alt="스크린샷">
+			</div>
+			<div class="slider__item">
+				<img src="/images/portfolio/ud/직업기초역량진단.png" alt="스크린샷">
+			</div>
+			<div class="slider__item">
+				<img src="/images/portfolio/ud/진로설계.png" alt="스크린샷">
+			</div>
+
+		</div>
+	</div>
+	<section class="modal overlay"></section>
+
+	<section>
+		<div>
+			<div class="list-y list-y-on card card2022-2">
+				<a class="show-popup modalButton" data-popup="popupOne" name="popupOne">
+					<dl>
+						<dt>슬라이드1</dt>
+					</dl>
+				</a>
+			</div>
+			<div class="list-y list-y-on card card2022-6">
+				<a class="show-popup modalButton" data-popup="popupOne2" name="popupOne2">
+					<dl>
+						<dt>슬라이드2</dt>
+					</dl>
+				</a>
+			</div>
+		</div>
+		</div>
+	</section>
+<style>
+	.slider{
+	    width: 100%;
+        margin: 0 auto 0;
+	}
+	img{
+		max-width: 100%;
+	}
+</style>
+	<script>
+	//매개변수를 잘 활용하세요.
+
+		function slide(pp) {
+
+
+			const SHOWING_CLASS = "showing";
+
+			const pop = document.querySelector(".modal");
+			// const modalBtn = document.querySelector(".modalButton");
+			// const strData = modalBtn.getAttribute(name);
+			const popid = document.getElementById(pp).getAttribute('id'); //아이디 확인
+
+			const popid2 = document.querySelector("#" + popid);
+
+			const firstSlide = popid2.querySelector(".slider__item:first-child");
+			const lastSlide = popid2.querySelector(".slider__item:last-child");
+
+
+			const currentSlide = popid2.querySelector(`.${SHOWING_CLASS}`);
+
+			if (currentSlide) { // 만약 현재 슬라이드라면
+				currentSlide.classList.remove(SHOWING_CLASS); // 현재 슬라이드에서 SHOWING_CLASS를 제거한다
+				const nextSlide = currentSlide.nextElementSibling; // 다음 슬라이드를 정의한다.
+				// console.log(strData);
+				console.log(popid);
+				console.log(popid2);
+				if (nextSlide) { //만약 다음 슬라이드가 있다면
+					nextSlide.classList.add(SHOWING_CLASS); //다음 슬라이드에 SHOWING_CLASS를 붙인다.
+					console.log("메롱2");
+				} else { // 다음 슬라이드가 없다면 =>  5번째 슬라이드라면(마지막 슬라이드라면)
+					firstSlide.classList.add(SHOWING_CLASS); // 첫번째 슬라이드에 SHOWING_CLASS를 붙인다.
+					console.log("메롱3");
+				}
+
+			} else {
+				firstSlide.classList.add(SHOWING_CLASS);
+			}
+		}
+		
+	
+	</script>
+
+	<script>
+		const leftBtn = document.querySelector(".card-popup .btn-left");
+		const rightBtn = document.querySelector(".card-popup .btn-right");
+
+		const moveRight = function () {
+
+			const currentSlidee = document.getElementById('slider');
+			// const currentSlide = currentSlidee.getElementsByClassName('showing');
+			const currentSlide = currentSlidee.querySelector(`.${SHOWING_CLASS}`);
+			if (currentSlide) {
+				currentSlide.classList.remove(SHOWING_CLASS);
+				const nextSlide = currentSlide.nextElementSibling;
+				if (nextSlide) {
+					nextSlide.classList.add(SHOWING_CLASS);
+				} else {
+					firstSlide.classList.add(SHOWING_CLASS);
+				}
+			} else {
+				firstSlide.classList.add(SHOWING_CLASS);
+			}
+		}
+
+		const moveLeft = function () {
+			// const currentSlide = document.querySelector(`.${SHOWING_CLASS}`);
+			const currentSlidee = document.getElementById('slider');
+			const currentSlide = currentSlidee.getElementsByClassName('showing');
+			if (currentSlide) {
+				currentSlide.classList.remove(SHOWING_CLASS);
+				const prevSlide = currentSlide.previousElementSibling;
+				if (prevSlide) {
+					prevSlide.classList.add(SHOWING_CLASS);
+				} else {
+					lastSlide.classList.add(SHOWING_CLASS);
+				}
+			} else {
+				firstSlide.classList.add(SHOWING_CLASS);
+			}
+		}
+
+		leftBtn.addEventListener("click", moveLeft);
+		rightBtn.addEventListener("click", moveRight);
+
+
+
+		const cardPopup = document.querySelector(".card-popup");
+		const closeBtn = document.querySelector(".card-popup .btn-close");
+		const open = "open";
+
+		function closepopup() {
+			const cardPopup = document.querySelector(".card-popup");
+			cardPopup.classList.remove(open);
+		}
+
+		closeBtn.addEventListener("click", closepopup);
+	</script>
+
+	<script type="text/javascript">
+		settings = {
+			objModalPopupBtn: ".modalButton",
+			objModalCloseBtn: ".overlay, .btn-close",
+			objModalDataAttr: "data-popup"
+		}
+		var interval;
+		$(settings.objModalPopupBtn).bind("click", function () {
+			if ($(this).attr(settings.objModalDataAttr)) {
+				var strDataPopupName = $(this).attr(settings.objModalDataAttr);
+				$(".overlay, #" + strDataPopupName).fadeIn(170);
+				var data = $(this).data("popup");
+				// setInterval(slide, 1000);
+				interval = setInterval(() => {slide(data)}, 1000);
+				// setInterval(() => {slide("popupOne2")}, 1000);
+			}
+		});
+
+		//On clicking the modal background
+		$(settings.objModalCloseBtn).bind("click", function () {
+			$(".modal").fadeOut(90);
+			clearInterval(interval);
+			// clearInterval(slide);
+		});
+
+ 
+
+	</script>
+</body>
+
+</html>

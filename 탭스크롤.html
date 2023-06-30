@@ -1,0 +1,147 @@
+
+
+[대학사업부]
+
+*대학 이력 관리 시스템 부트스트랩 기반 UI 설계 퍼블리싱(2020)
+http://career.huno.kr:9019/
+
+*대학 이력 관리 시스템 메인 페이지 퍼블리싱(하기 리스트 포함 40여곳)
+
+울산대학교 퍼블리싱(2021)
+https://ucareer.ulsan.ac.kr/
+
+서강대학교 퍼블리싱(2021)
+https://job.sogang.ac.kr/
+
+부천대학교 퍼블리싱(2020)
+http://selp.bc.ac.kr/Main/
+
+연성대학교 퍼블리싱(2020)
+https://carry.yeonsung.ac.kr/
+
+수원과학대 퍼블리싱(2020)
+https://spectrum.ssc.ac.kr/
+
+인덕대학교 퍼블리싱(2019)
+https://cds.induk.ac.kr/
+
+제주관광대학교 퍼블리싱(2019)
+https://ipsa.jtu.ac.kr/
+
+*캠퍼스 리쿠르팅 퍼블리싱(2021)
+https://cdp.hanyang.ac.kr/Main/CR_Default.aspx
+
+*대학 카이로스 심리검사 결과지 퍼블리싱 및 디자인(2018)
+http://ud.huno.kr/WorkCenter/Test/WorkTestResult9.aspx 외
+
+
+
+[EAP 및 연구소]
+
+*스마트폰 우울 탐지 플랫봄 연구 시스템 MOCA 퍼블리싱(2021)
+https://iitp.huno.kr/
+
+*굿테라피 퍼블리싱(2020)
+http://goodtherapy.co.kr/
+
+*아이돌보미 인·적성검사 메인 및 결과지 퍼블리싱(2020)
+https://idolbomtest.co.kr/
+
+*근로자 지원프로그램 시스템 퍼블리싱 + 웹디자인(2017)
+https://eap.co.kr/
+
+*근로자 지원프로그램 진단 검사 5종 결과지 퍼블리싱 + 웹디자인(2017)
+
+
+
+[HR 사업부]
+*NCS 채용 시스템 지원자 양식 관리 UI 구축 퍼블리싱 (2021)
+http://career.huno.kr:8413/admin/Default.aspx
+
+*한전/LH/코레일 외 공공기관 NCS 채용시스템 공고문 퍼블리싱(2017~매년)
+
+
+*보안상의 이유로 url이 없거나 화면이 안 열리는 경우, 필요시 이미지 캡처 등을 통한 방법으로 필요시 제출하겠습니다.
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>탭 스크롤</title>
+</head>
+
+<body>
+    <style>
+.test span{
+    background-color: red;
+    margin:5px;
+    color: #fff;
+    cursor: pointer;
+}
+    </style>
+    <div class="test" style="width:500px; overflow-x: scroll;">
+        <div style="width:1000px;">
+        <span onclick="moveScrollLeft()">의사소통역량</span>
+        <span onclick="moveScrollLeft()"> 탭2    </span>
+        <span onclick="moveScrollLeft()"> 탭3    </span>
+        <span onclick="moveScrollLeft()"> 탭4    </span>
+        <span onclick="moveScrollLeft()"> 탭5    </span>
+        <span onclick="moveScrollLeft()"> 탭6    </span>
+        <span onclick="moveScrollLeft()"> 탭7    </span>
+        <span onclick="moveScrollLeft()"> 탭8    </span>
+      </div></div>
+      
+<script>
+    moveScrollLeft = function() {
+  var _scrollX = $('.test').scrollLeft();
+  $('.test').scrollLeft(_scrollX + 10);
+};
+</script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        li {list-style: none;}
+        a {
+            text-decoration: none;
+            color: red;
+        }
+        .tab_list{display: flex;}
+        </style>
+    <div class="tab_box">
+        <ul class="tab_list">
+            <li><a href=""> INFO</a></li><li><a href=""> INFO</a></li><li><a href=""> INFO</a></li><li><a href=""> INFO</a></li><li><a href=""> INFO</a></li>
+            <li><a href=""> INFO</a></li>
+        </ul>
+    </div>
+    <script>
+       $(document).ready(function () {
+   
+        if($(".customtab6 .nav-item .nav-link").hasClass("active") === true) {
+            var offset = $(".nav-link.text-center.active").offset();
+            $('.customtab6').animate({scrollLeft:offset.left - 100},100);
+            // var _scrollX = $('.nav-link.text-center.active').scrollLeft();
+            // $('.customtab6').scrollLeft(_scrollX + 100);
+        }
+
+    });
+    </script>
+</body>
+</html>

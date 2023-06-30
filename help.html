@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+	<title>Document</title>
+</head>
+
+<body>
+
+	<div class="card-popup modal" id="popupOne">
+		<button class="btn-close">닫기버튼</button>
+		<button class="btn-left">
+			<img src="https://eap.co.kr/images/2022/btn_mainbanner_left_normal.svg">
+		</button>
+		<button class="btn-right">
+			<img src="https://eap.co.kr/images/2022/btn_mainbanner_right_normal.svg">
+		</button>
+		<div class="slider">
+			<div class="slider__item showing" style="background: #321c1c;">
+			</div>
+			<div class="slider__item" style="background: #ddd;">
+			</div>
+			<div class="slider__item" style="background: #4c7831;">
+			</div>
+
+		</div>
+	</div>
+	<style>
+		.card-popup .slider {
+			width: 100%;
+			margin: 0 auto;
+		}
+	</style>
+	<div class="card-popup modal" id="popupOne2">
+		<button class="btn-close">닫기버튼</button>
+		<button class="btn-left">
+			<img src="https://eap.co.kr/images/2022/btn_mainbanner_left_normal.svg">
+		</button>
+		<button class="btn-right">
+			<img src="https://eap.co.kr/images/2022/btn_mainbanner_right_normal.svg">
+		</button>
+		<div class="slider">
+			<div class="slider__item showing" style="background: #317578;">
+			</div>
+			<div class="slider__item" style="background: #ddd;">
+			</div>
+			<div class="slider__item" style="background: #cb6b6b;">
+			</div>
+
+		</div>
+	</div>
+	<section class="modal overlay"></section>
+
+	<section>
+		<div>
+
+			<div class="list-y list-y-on card card2022-2 sa sa-up">
+				<a class="show-popup modalButton" name="popupOne" data-popup="popupOne" onclick="slide()">
+					<dl>
+						<dt>슬라이드 1</dt>
+					</dl>
+				</a>
+			</div>
+
+			<div class="list-y list-y-on card card2022-6 sa sa-up" data-sa-delay="800">
+				<a class="show-popup modalButton" name="popupOne2" data-popup="popupOne2" onclick="slide()">
+					<dl>
+						<dt>슬라이드 2</dt>
+					</dl>
+				</a>
+			</div>
+
+		</div>
+
+	</section>
+
+
+
+
+
+	<script>
+		const SHOWING_CLASS = "showing";
+
+		const firstSlide = document.querySelector(".slider__item:first-child");
+		const lastSlide = document.querySelector(".slider__item:last-child");
+
+		const slide = setInterval(function () {
+
+			const currentSlide = document.querySelector(`.${SHOWING_CLASS}`);
+
+			if (currentSlide) { // 만약 현재 슬라이드라면
+				currentSlide.classList.remove(SHOWING_CLASS); // 현재 슬라이드에서 SHOWING_CLASS를 제거한다
+				const nextSlide = currentSlide.nextElementSibling; // 다음 슬라이드를 정의한다.
+
+				if (nextSlide) { //만약 다음 슬라이드가 있다면
+					nextSlide.classList.add(SHOWING_CLASS); //다음 슬라이드에 SHOWING_CLASS를 붙인다.
+				} else { // 다음 슬라이드가 없다면 =>  5번째 슬라이드라면(마지막 슬라이드라면)
+					firstSlide.classList.add(SHOWING_CLASS); // 첫번째 슬라이드에 SHOWING_CLASS를 붙인다.
+				}
+
+			} else {
+				firstSlide.classList.add(SHOWING_CLASS);
+			}
+
+		}, 1000);
+
+
+		const leftBtn = document.querySelector(".btn-left");
+		const rightBtn = document.querySelector(".btn-right");
+
+		const moveRight = function () {
+
+			const currentSlide = currentSlidee.querySelector(`.${SHOWING_CLASS}`);
+			if (currentSlide) {
+				currentSlide.classList.remove(SHOWING_CLASS);
+				const nextSlide = currentSlide.nextElementSibling;
+				if (nextSlide) {
+					nextSlide.classList.add(SHOWING_CLASS);
+				} else {
+					firstSlide.classList.add(SHOWING_CLASS);
+				}
+			} else {
+				firstSlide.classList.add(SHOWING_CLASS);
+			}
+		}
+
+		const moveLeft = function () {
+			const currentSlide = document.querySelector(`.${SHOWING_CLASS}`);
+			if (currentSlide) {
+				currentSlide.classList.remove(SHOWING_CLASS);
+				const prevSlide = currentSlide.previousElementSibling;
+				if (prevSlide) {
+					prevSlide.classList.add(SHOWING_CLASS);
+				} else {
+					lastSlide.classList.add(SHOWING_CLASS);
+				}
+			} else {
+				firstSlide.classList.add(SHOWING_CLASS);
+			}
+		}
+
+		leftBtn.addEventListener("click", moveLeft);
+		rightBtn.addEventListener("click", moveRight);
+
+
+		settings = {
+			objModalPopupBtn: ".modalButton",
+			objModalCloseBtn: ".overlay, .btn-close",
+			objModalDataAttr: "data-popup"
+		}
+
+		$(settings.objModalPopupBtn).bind("click", function () {
+			if ($(this).attr(settings.objModalDataAttr)) {
+				const strDataPopupName = $(this).attr(settings.objModalDataAttr);
+				$(".overlay").fadeIn(170);
+				$("#" + strDataPopupName).fadeIn(170);
+
+			}
+		});
+
+
+		$(settings.objModalCloseBtn).bind("click", function () {
+			$(".modal").fadeOut(90);
+			clearInterval(slide);
+		});
+	</script>
+<style>
+h1,h2,h3,h4,h5,h6,li,ul,span,a,div,body,html,b,p,dl,dt,dd,section,header,footer{padding:0;margin:0;position:relative;color:#000;text-decoration:none;font-family:'Pretendard-Regular';box-sizing:border-box}.pointer{cursor:pointer}.mw100{max-width:100%}.mh100{max-height:100%}::-webkit-scrollbar{width:15px}::-webkit-scrollbar-track{background-color:#f5f5f5}::-webkit-scrollbar-thumb{background-color:#335fff;background-color:#000;border-radius:0px}::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment{display:block;height:8px;background-color:#f5f5f5}::-webkit-scrollbar-corner{background-color:#f5f5f5}.home__scroll{position:absolute;right:2%;top:0.5%;width:21vw;height:21vw;transform:scale(0);max-width:300px;z-index:1}.home__scroll__text{font-size:24px}a{cursor:pointer}ul{list-style:none}.year{color:#335fff}.d-flex{display:flex}.j-sb{justify-content:space-between}.align-center{align-items:center}.text-fff{color:#fff}@font-face{font-family:'Pretendard-ExtraLight';src:url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraLight.woff") format("woff");font-weight:200;font-style:normal}@font-face{font-family:'Pretendard-Regular';src:url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");font-weight:400;font-style:normal}@font-face{font-family:'Pretendard-Bold';src:url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");font-weight:700;font-style:normal}@font-face{font-family:'Pretendard-Black';src:url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff") format("woff");font-weight:900;font-style:normal}.btn-gotop{background:url(/images/portfolio/btn_top_normal.svg) no-repeat 92%;width:32px;height:32px;position:fixed;text-align:center;padding-top:5px;display:none;right:30px;z-index:999;bottom:30px}header{background:#000;height:70px;padding:0 55px;position:fixed;top:0;width:100%;opacity:0;transform:translateY(-60px);transition-delay:.5s;transition:all .6s ease;z-index:10}header.header-on{opacity:1;transform:translateY(0)}header h1{font-size:24px}header>.d-flex{height:100%}header ul li{padding:0 30px;font-size:20px}header .info span:nth-child(1){padding-right:30px}header .info span:nth-child(1):before{content:"";position:absolute;right:14px;top:50%;transform:translateY(-50%);width:1px;height:14px;background:#ffffff75}.list-y{transform:translateY(-200px);transition:all 1s ease;opacity:0}.list-y:nth-child(1){transition-delay:0.3s}.list-y:nth-child(2){transition-delay:0.7s}.list-y:nth-child(3){transition-delay:1s}.list-y:nth-child(4){transition-delay:1.3s}.list-y:nth-child(5){transition-delay:1.5s}.list-y:nth-child(6){transition-delay:1.8s}.list-y.list-y-on{transform:translateY(0px);opacity:1}section{padding-left:6vw;padding-right:6vw;padding-top:6vw}.year{font-size:3.4rem;font-family:'Pretendard-Black';font-weight:900;margin-top:5vh;margin-bottom:1vh}.card a{display:flex;height:100%;align-items:center;padding:0 50px;border-radius:34px}.card a:before{content:"";width:100%;height:100%;background:#000;position:absolute;left:0;top:0;opacity:0.3;border-radius:34px}.card a dl dt{color:#fff;font-size:30px;font-weight:bold;margin-bottom:10px;text-shadow:1px 1px 1px #000}.card a dl dd{color:#fff;font-size:20px;text-shadow:1px 1px 1px #000}.card a:hover:before{opacity:0.3;transition:all 0.5s}.card a:hover dl dd{color:#fff}.card{height:300px;background-size:cover !important;margin:30px 0}.card2022-2 a{background:url(/images/portfolio/card2022-2.png) no-repeat top;background:#ddd}.card2022-3 a{background:url(/images/portfolio/card2022-3.png) no-repeat top}.card2022-4 a{background:url(/images/portfolio/card2022-4.png) no-repeat top}.card2022-5 a{background:url(/images/portfolio/card2022-5.png) no-repeat top}.card2022-6 a{background:url(/images/portfolio/card2022-6.png) no-repeat top;background:#ddd}.card2022-7 a{background:url(/images/portfolio/청주대학교.png) no-repeat top}.card2021-1 a{background:url(/images/portfolio/캠퍼스리쿠르팅.png) no-repeat top}.card2021-2 a{background:url(/images/portfolio/지원자양식관리.png) no-repeat top}.card2021-3 a{background:url(/images/portfolio/인제대학교.png) no-repeat top}.card2021-4 a{background:url(/images/portfolio/card2021-1.png) no-repeat top}.card2021-5 a{background:url(/images/portfolio/울산대학교.png) no-repeat top}.card2021-6 a{background:url(/images/portfolio/서강대학교1.png) no-repeat top}.card2021-7 a{background:url(/images/portfolio/모카.png) no-repeat top}.card2020-1 a{background:url(/images/portfolio/card2020-1.png) no-repeat top}.card2020-2 a{background:url(/images/portfolio/아이돌보미인적성검사.png) no-repeat top}.card2020-3 a{background:url(/images/portfolio/부천대학교.png) no-repeat top}.card2020-4 a{background:url(/images/portfolio/연성대학교.png) no-repeat top}.card2020-5 a{background:url(/images/portfolio/수원과학대학교.png) no-repeat top}.card2020-6 a{background:url(/images/portfolio/경남도립거창대학.png) no-repeat top}.card2019-1 a{background:url(/images/portfolio/card2019-1.png) no-repeat top}.card2019-2 a{background:url(/images/portfolio/인덕대학교.png) no-repeat top}.card2019-3 a{background:url(/images/portfolio/조선이공대학교.png) no-repeat top}.card2019-2 a{background:url(/images/portfolio/제주관광대학교.png) no-repeat top}.card2017-1 a{background:url(/images/portfolio/card2017-1.png) no-repeat top}.card2017-2 a{background:url(/images/portfolio/인천대학교.png) no-repeat top}.card2017-3 a{background:url(/images/portfolio/수성대학교.png) no-repeat top}.card-popup{position:fixed;background:#fff;display:none;z-index:20;align-items:center;justify-content:center;top:50%;left:50%;transform:translate(-50%, -50%);width:1000px;height:600px}.card-popup .btn-left{left:-37px;top:50%;position:absolute;z-index:10;transform:translateY(-50%)}.card-popup button{border:0;background:none;cursor:pointer}.card-popup .btn-right{right:-37px;top:50%;position:absolute;z-index:10;transform:translateY(-50%)}.card-popup .btn-close{padding:0 20px 0 0;width:100%;height:64px;display:flex;align-items:center;justify-content:flex-end}.card-popup #slider{width:100%;margin:0 auto 0}.card-popup #slider img{max-width:100%}.open{display:flex}.modal.overlay{display:none;position:fixed;top:0;left:0;width:100%;min-height:100%;background:rgba(0,0,0,0.64);z-index:13}.slider__item{width:100%;height:500px;display:flex;justify-content:center;align-items:flex-start;position:absolute;top:0;z-index:0;opacity:0;transition:all 0.2s ease-in-out}.showing{z-index:1;opacity:1}
+
+
+</style>
+
+</body>
+
+</html>
